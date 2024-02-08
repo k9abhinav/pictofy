@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const plm = require("passport-local-mongoose");
+require('dotenv').config();
 
-mongoose.connect("mongodb+srv://abhinava03kks:pinterest@pinterest.oltmm1v.mongodb.net/users/?retryWrites=true&w=majority").then((response)=>{
+
+mongoose.connect(process.env.URL).then((response)=>{
   console.log("Connected to userModdel DB")
 })
 .catch((error)=>{
