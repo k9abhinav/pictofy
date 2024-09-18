@@ -82,6 +82,39 @@ router.post("/createpost", isLoggedIn,upload.single("postImage"), async function
   res.redirect("/profile");
 });
 
+// Edit profile GET route
+router.get("/edit", isLoggedIn, async function (req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  res.render("edit", { user, nav: true });
+});
+
+// Edit profile POST route
+router.post("/edit", isLoggedIn, async function (req, res, next) {
+  const { email, name, contact } = req.body;
+  const user = await userModel.findOne({ username: req.session.passport.user });
+
+  // Update the user details
+  user.email = email;
+  user.name = name;
+  user.contact = contact;
+
+  await user.save();
+  res.redirect("/profile");
+});
+
+router.get("/post/:id", isLoggedIn, async function (req, res, next) {
+  try {
+    const post = await postModel.findById(req.params.id).populate("user");
+
+    // Render the detailed view page
+    res.render("postDetail", { post, nav: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Something went wrong.");
+  }
+});
+
+
 router.post("/register", function (req, res) {
   const { username, email, name,contact } = req.body;
   const userdata = new userModel({ username, email, name,contact });

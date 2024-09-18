@@ -1,0 +1,46 @@
+<%- include ./partials/header.ejs %>
+<div class="edit-profile w-full min-h-screen bg-zinc-800 pt-1 px-10 text-white">
+    <div class="profile-details flex flex-col items-center justify-center mt-10">
+        <h1 class="text-3xl font-semibold">Edit Profile</h1>
+
+        <form action="/edit" method="POST" class="flex flex-col gap-4 mt-5">
+            <label for="name" class="text-lg">Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                class="p-2 rounded-lg bg-zinc-700 text-white"
+                value="<%= user.name %>"
+                required
+            >
+
+            <label for="email" class="text-lg">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                class="p-2 rounded-lg bg-zinc-700 text-white"
+                value="<%= user.email %>"
+                required
+            >
+
+            <label for="contact" class="text-lg">Contact</label>
+            <input
+                type="text"
+                id="contact"
+                name="contact"
+                class="p-2 rounded-lg bg-zinc-700 text-white"
+                value="<%= user.contact %>"
+            >
+
+            <button
+                type="submit"
+                class="px-7 py-2 bg-red-500 rounded-lg mt-5 font-semibold"
+            >
+                Save Changes
+            </button>
+        </form>
+    </div>
+</div>
+<%- include ./partials/footer.ejs %>
+    
