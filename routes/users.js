@@ -5,7 +5,7 @@ require('dotenv').config();
 
 mongoose.connect("mongodb+srv://abhinava03kks:pinterest@pinterest.oltmm1v.mongodb.net/?retryWrites=true&w=majority").then((response)=>{
   console.log("Connected to userModdel DB")
-})
+})  
 .catch((error)=>{
   console.log(error);
   console.log("Not connected to the database");

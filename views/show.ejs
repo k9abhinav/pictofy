@@ -2,13 +2,14 @@
 <div class="w-full min-h-screen bg-zinc-800 px-10 text-white">
     <div class="cards flex flex-wrap gap-10">
         <% user.posts.forEach(function(elem){ %>
-            <div class="card w-48 h-48">
+            <div class="card w-48 ">
                 <a href="/post/<%= elem._id %>">
-                    <div class="w-full h-full bg-zinc-200 rounded-lg mt-10 overflow-hidden">
+                    <div class="w-full h-48 bg-zinc-200 rounded-lg mt-10 overflow-hidden">
                         <img class="w-full h-full object-cover" src="/images/uploads/<%= elem.image %>" alt="">
                     </div>
                     <h5 class="font-medium text-xs mt-5"><%= elem.title %></h5>
                 </a>
+                <p>Likes: <%= elem.likes.length %></p>
             </div>
         <% }) %>
     </div>
